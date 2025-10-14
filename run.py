@@ -1,0 +1,48 @@
+import os
+import subprocess
+
+print("""
+ファイルを番号で実行するプログラム
+例）directory number: 01 file number: 01
+""" )
+
+dir_num = input("directory number: ")
+file_num = input("file number: ")
+
+# Find the directory
+target_dir = None
+try:
+    # List directories and filter for those that start with the given number
+    dirs = [d for d in os.listdir('.') if os.path.isdir(d) and d.startswith(dir_num + '_')]
+    if dirs:
+        target_dir = sorted(dirs)[0]
+except FileNotFoundError:
+    print("エラー: カレントディレクトリの読み込みに失敗しました。")
+    exit()
+
+if not target_dir:
+    print(f"エラー: ディレクトリ番号 '{dir_num}' が見つかりません。")
+else:
+    # Find the file
+    target_file = None
+    try:
+        # List files in the target directory and filter for python files that start with the given number
+        files = [f for f in os.listdir(target_dir) if f.startswith(file_num + '_') and f.endswith('.py')]
+        if files:
+            target_file = os.path.join(target_dir, sorted(files)[0])
+    except FileNotFoundError:
+        print(f"エラー: ディレクトリ '{target_dir}' が見つかりません。")
+        target_file = None
+
+    if not target_file:
+        print(f"エラー: ディレクトリ '{target_dir}' 内にファイル番号 '{file_num}' の .py ファイルが見つかりません。")
+    else:
+        print(f"実行中: {target_file}")
+        try:
+            # On Windows, it's often better to use 'py' launcher
+            subprocess.run(['py', target_file], check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"エラー: {target_file} の実行中にエラーが発生しました。")
+            print(e)
+        except FileNotFoundError:
+            print("エラー: 'py' コマンドが見つかりません。Pythonランチャーがインストールされ、PATHに含まれていることを確認してください。")
