@@ -26,8 +26,8 @@ else:
     # Find the file
     target_file = None
     try:
-        # List files in the target directory and filter for python files that start with the given number
-        files = [f for f in os.listdir(target_dir) if f.startswith(file_num + '_') and f.endswith('.py')]
+        # List files in the target directory and filter for python or markdown files that start with the given number
+        files = [f for f in os.listdir(target_dir) if f.startswith(file_num + '_') and (f.endswith('.py') or f.endswith('.md'))]
         if files:
             target_file = os.path.join(target_dir, sorted(files)[0])
     except FileNotFoundError:
@@ -37,12 +37,25 @@ else:
     if not target_file:
         print(f"エラー: ディレクトリ '{target_dir}' 内にファイル番号 '{file_num}' の .py ファイルが見つかりません。")
     else:
-        print(f"実行中: {target_file}")
-        try:
-            # On Windows, it's often better to use 'py' launcher
-            subprocess.run(['py', target_file], check=True)
-        except subprocess.CalledProcessError as e:
-            print(f"エラー: {target_file} の実行中にエラーが発生しました。")
-            print(e)
-        except FileNotFoundError:
-            print("エラー: 'py' コマンドが見つかりません。Pythonランチャーがインストールされ、PATHに含まれていることを確認してください。")
+        if target_file.endswith('.py'):
+            print(f"実行中: {target_file}")
+            try:
+                # On Windows, it's often better to use 'py' launcher
+                subprocess.run(['py', target_file], check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"エラー: {target_file} の実行中にエラーが発生しました。")
+                print(e)
+            except FileNotFoundError:
+                print("エラー: 'py' コマンドが見つかりません。Pythonランチャーがインストールされ、PATHに含まれていることを確認してください。")
+        elif target_file.endswith('.md'):
+            print(f"エディターで開いています: {target_file}")
+            try:
+                # Use 'start' command on Windows to open with default application
+                subprocess.run(['start', target_file], shell=True, check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"エラー: {target_file} の開中にエラーが発生しました。")
+                print(e)
+            except FileNotFoundError:
+                print("エラー: ファイルを開くコマンドが見つかりません。")
+        else:
+            print(f"エラー: サポートされていないファイル形式です: {target_file}")

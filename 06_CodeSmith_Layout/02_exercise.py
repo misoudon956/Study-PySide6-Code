@@ -24,7 +24,6 @@ class MainWindow(QMainWindow):
 
         # --- 課題1 --- #
         # サイドバーに "Add Frame" というテキストの QPushButton を追加してみましょう。
-        sidebar_layout.addWidget(QPushButton("Add Frame"))
 
         sidebar_layout.addStretch()
         sidebar.setLayout(sidebar_layout)
@@ -36,7 +35,6 @@ class MainWindow(QMainWindow):
         
         # --- 課題2 --- #
         # メインエリアに "Frame 1" というテキストの QLabel を追加してみましょう。
-        main_area_layout.addWidget(QLabel("Frame 1"))
 
         main_area.setLayout(main_area_layout)
 
@@ -47,6 +45,39 @@ class MainWindow(QMainWindow):
         container = QWidget()
         container.setLayout(main_layout)
         self.setCentralWidget(container)
+
+        # ここから下にコードを書いてください
+
+
+
+
+
+
+
+        # --- 構文のヒント ---
+        # # ウィジェットの作成
+        # widget_name = QPushButton("テキスト") # または QLabel("テキスト")
+        #
+        # # レイアウトにウィジェットを追加
+        # layout_name.addWidget(widget_name)
+
+
+
+
+
+
+
+
+
+
+        # --- 解答 --- #
+        # (課題が完成したら、以下のコメントを外して動作確認)
+        # sidebar_layout.addWidget(QPushButton("Add Frame"))
+        # main_area_layout.addWidget(QLabel("Frame 1"))
+
+        # --- 解答のヒント ---
+        # sidebar_layout.addWidget(QPushButton("Add Frame"))
+        # main_area_layout.addWidget(QLabel("Frame 1"))
 
 
 if __name__ == "__main__":

@@ -23,10 +23,12 @@ class CustomFrame(QWidget):
     # --- 課題1 --- #
     # 枠線の色を変更するためのメソッド `setBorderColor` を作成しましょう。
     # このメソッドは、新しい色(QColor)を引数として受け取ります。
-    def setBorderColor(self, color):
-        self._border_color = color
-        # update()を呼び出して、paintEventを再実行させ、画面を更新します。
-        self.update()
+    # ここから下にコードを書いてください
+
+
+
+
+
 
 
 class MainWindow(QMainWindow):
@@ -44,8 +46,13 @@ class MainWindow(QMainWindow):
         # `self.frame` の `setBorderColor` メソッドを呼び出して
         # 枠線の色が変わるようにしましょう。
         # ヒント: ラムダ式を使うと、引数を渡すのが簡単になります。
-        button_blue.clicked.connect(lambda: self.frame.setBorderColor(QColor("blue")))
-        button_red.clicked.connect(lambda: self.frame.setBorderColor(QColor("red")))
+        # ここから下にコードを書いてください
+
+
+
+
+
+
 
         # --- レイアウト --- #
         layout = QVBoxLayout()
@@ -55,6 +62,46 @@ class MainWindow(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+
+
+        # --- 構文のヒント ---
+        # # メソッドの定義
+        # def method_name(self, arg1, arg2):
+        #     # 処理
+        #     self.update() # 画面更新
+        #
+        # # シグナルとスロットの接続 (ラムダ式使用)
+        # widget.signal_name.connect(lambda: self.method_name(引数))
+
+
+
+
+
+
+
+
+
+
+        # --- 解答 --- #
+        # (課題が完成したら、以下のコメントを外して動作確認)
+        # # CustomFrame クラスの setBorderColor メソッド
+        # # def setBorderColor(self, color): # メソッド定義は既に存在するためコメントアウト
+        # #     self._border_color = color
+        # #     self.update()
+        #
+        # # MainWindow クラスのボタン接続
+        # button_blue.clicked.connect(lambda: self.frame.setBorderColor(QColor("blue")))
+        # button_red.clicked.connect(lambda: self.frame.setBorderColor(QColor("red")))
+
+        # --- 解答のヒント ---
+        # # CustomFrame クラスの setBorderColor メソッド
+        # # def setBorderColor(self, color): # メソッド定義は既に存在するためコメントアウト
+        # #     self._border_color = color
+        # #     self.update()
+        #
+        # # MainWindow クラスのボタン接続
+        # button_blue.clicked.connect(lambda: self.frame.setBorderColor(QColor("blue")))
+        # button_red.clicked.connect(lambda: self.frame.setBorderColor(QColor("red")))
 
 
 if __name__ == "__main__":

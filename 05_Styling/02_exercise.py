@@ -22,24 +22,13 @@ class MainWindow(QMainWindow):
         action_button = QPushButton("Action Button")
         action_button.setObjectName("action_button") # スタイル適用のため名前を設定
 
-        # --- ここにスタイルシートを記述 --- #
-        style = """
-            #info_label {
-                color: green;
-                font-size: 20px;
-            }
-            #action_button {
-                background-color: orange;
-                font-size: 14px;
-                color: white;
-                padding: 5px;
-                border-radius: 5px;
-            }
-            #action_button:hover {
-                background-color: darkorange;
-            }
-        """
-        self.setStyleSheet(style)
+        # ここから下にコードを書いてください
+
+
+
+
+
+
 
         # --- レイアウト --- #
         layout = QVBoxLayout()
@@ -48,6 +37,68 @@ class MainWindow(QMainWindow):
         container = QWidget()
         container.setLayout(layout)
         self.setCentralWidget(container)
+
+
+        # --- 構文のヒント ---
+        # # スタイルシートの定義
+        # style_sheet = """
+        #     セレクタ {
+        #         プロパティ: 値;
+        #     }
+        #     セレクタ:擬似状態 {
+        #         プロパティ: 値;
+        #     }
+        # """
+        # # スタイルシートの適用
+        # self.setStyleSheet(style_sheet)
+
+
+
+
+
+
+
+
+
+
+        # --- 解答 --- #
+        # (課題が完成したら、以下のコメントを外して動作確認)
+        # style = """
+        #     #info_label {
+        #         color: green;
+        #         font-size: 20px;
+        #     }
+        #     #action_button {
+        #         background-color: orange;
+        #         font-size: 14px;
+        #         color: white;
+        #         padding: 5px;
+        #         border-radius: 5px;
+        #     }
+        #     #action_button:hover {
+        #         background-color: darkorange;
+        #     }
+        # """
+        # self.setStyleSheet(style)
+
+        # --- 解答のヒント ---
+        # style = """
+        #     #info_label {
+        #         color: green;
+        #         font-size: 20px;
+        #     }
+        #     #action_button {
+        #         background-color: orange;
+        #         font-size: 14px;
+        #         color: white;
+        #         padding: 5px;
+        #         border-radius: 5px;
+        #     }
+        #     #action_button:hover {
+        #         background-color: darkorange;
+        #     }
+        # """
+        # self.setStyleSheet(style)
 
 
 if __name__ == "__main__":
