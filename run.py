@@ -40,13 +40,14 @@ else:
         if target_file.endswith('.py'):
             print(f"実行中: {target_file}")
             try:
-                # On Windows, it's often better to use 'py' launcher
-                subprocess.run(['py', target_file], check=True)
+                # Use python from .venv
+                venv_python = os.path.join('.venv', 'Scripts', 'python.exe')
+                subprocess.run([venv_python, target_file], check=True)
             except subprocess.CalledProcessError as e:
                 print(f"エラー: {target_file} の実行中にエラーが発生しました。")
                 print(e)
             except FileNotFoundError:
-                print("エラー: 'py' コマンドが見つかりません。Pythonランチャーがインストールされ、PATHに含まれていることを確認してください。")
+                print(f"エラー: 仮想環境のPythonが見つかりません。'{venv_python}'が存在することを確認してください。")
         elif target_file.endswith('.md'):
             print(f"エディターで開いています: {target_file}")
             try:
