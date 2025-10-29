@@ -1,13 +1,19 @@
 import os
 import subprocess
+import sys
 
-print("""
+# Check for command-line arguments
+if len(sys.argv) == 3:
+    dir_num = sys.argv[1]
+    file_num = sys.argv[2]
+    print(f"directory number: {dir_num}, file number: {file_num}")
+else:
+    print('''
 ファイルを番号で実行するプログラム
 例）directory number: 01 file number: 01
-""" )
-
-dir_num = input("directory number: ")
-file_num = input("file number: ")
+''' )
+    dir_num = input("directory number: ")
+    file_num = input("file number: ")
 
 # Find the directory
 target_dir = None
