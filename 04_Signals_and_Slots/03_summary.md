@@ -33,7 +33,7 @@
 
 ## よく使われるシグナル
 
-- `QPushButton`: `clicked()`
+- `QPushButton`: `clicked()` (ボタンがクリックされたとき)
 - `QLineEdit`: `textChanged(str)` (テキストが変更されたとき、新しいテキストが引数で渡される)
 - `QCheckBox`: `toggled(bool)` (チェック状態が変わったとき、新しい状態が引数で渡される)
 
